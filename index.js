@@ -12,12 +12,14 @@ const app = express();
 const authRouter = require('./lib/routes/auth.js');
 const adminRouter = require('./lib/routes/admin.js');
 const productRouter = require('./lib/routes/product.js');
+const userRouter = require('./lib/routes/user.js');
 
 // middleware
 app.use(express.json());
 app.use(authRouter);
 app.use(productRouter);
 app.use(adminRouter);
+app.use(userRouter);
 // connecting to MongoDB
 async function connectDB() {
     try {

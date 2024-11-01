@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, duplicate_ignore
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:amazone_clone/constants/global_variabl.dart';
@@ -40,6 +42,7 @@ class AdminService {
         category,
         imagesUrl,
         null,
+        null,
       );
       http.Response res = await http.post(Uri.parse('$uri/admin/addproduct'),
           headers: {
@@ -49,6 +52,7 @@ class AdminService {
           body: product.toJson());
       httpErrorHandel(
           response: res,
+          // ignore: use_build_context_synchronously
           context: context,
           onSuccess: () {
             showSnackbar(context, 'Product added Successfully!');
