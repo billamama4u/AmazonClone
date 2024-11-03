@@ -1,0 +1,59 @@
+[33mcommit 7c497b4331b4382db9431a6af0e65b5449e2d428[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: billa <trai7078@gmail.com>
+Date:   Sun Nov 3 23:40:28 2024 +0530
+
+    server update
+
+[33mcommit 64db83b35ea2839ec3d96492923ba954ccd20429[m
+Author: billa <trai7078@gmail.com>
+Date:   Sun Nov 3 21:08:38 2024 +0530
+
+            modified:   index.js
+            modified:   lib/features/admin/widgets/earning_chart.dart
+            modified:   lib/features/homescreen/Services/homeservices.dart
+
+[33mcommit e14f833f236ca895b7e54500dd2fc95dc3e6f1c1[m
+Author: billa <trai7078@gmail.com>
+Date:   Sun Nov 3 20:55:36 2024 +0530
+
+    completed
+
+[33mcommit 6bab0a310d3874b4150f4ec588c071488f4ad3ca[m
+Author: billa <trai7078@gmail.com>
+Date:   Sat Nov 2 00:03:54 2024 +0530
+
+            modified:   index.js
+            modified:   lib/common/widgets/bottombar.dart
+            new file:   lib/features/address/address.dart
+            modified:   lib/features/admin/services/admin_service.dart
+            modified:   lib/features/auth/authscreens/authscreen.dart
+            new file:   lib/features/cart/screens/cart_screen.dart
+            new file:   lib/features/cart/services/cart_services.dart
+            new file:   lib/features/cart/widgets/cart_product.dart
+            new file:   lib/features/cart/widgets/carts_subtotal.dart
+            modified:   lib/features/homescreen/Services/homeservices.dart
+            modified:   lib/features/homescreen/widgets/dealoftheday.dart
+            modified:   lib/features/product_details/screens/product_details_screen.dart
+            new file:   lib/features/product_details/services/product_detail_services.dart
+            modified:   lib/features/search/services/searchservices.dart
+            modified:   lib/features/search/widget/searchedproduct.dart
+            modified:   lib/models/product.dart
+            modified:   lib/models/product.js
+            new file:   lib/models/rating.dart
+            new file:   lib/models/rating.js
+            modified:   lib/models/user.dart
+            modified:   lib/models/user.js
+            modified:   lib/provider/user_provider.dart
+            modified:   lib/router.dart
+            modified:   lib/routes/admin.js
+            modified:   lib/routes/product.js
+            new file:   lib/routes/user.js
+            modified:   lib/services/auth_services.dart
+            modified:   pubspec.lock
+            modified:   pubspec.yaml
+
+[33mcommit f4902bf985cc3e9eb98240b766655d2ffd49fa1a[m
+Author: billa <trai7078@gmail.com>
+Date:   Tue Oct 29 20:01:15 2024 +0530
+
+    first commit

@@ -56,7 +56,7 @@ class _AddressScreenState extends State<AddressScreen> {
     if (ifForm) {
       if (_addressFormKey.currentState!.validate()) {
         addressToBeUsed =
-            '${_flatcontroller.text},,${_areacontroller.text},${_towncontroller.text} - ${_pincodecontroller.text}';
+            '${_flatcontroller.text},${_areacontroller.text},${_towncontroller.text} - ${_pincodecontroller.text}';
       } else {
         throw Exception('please enter all the values!');
       }

@@ -4,24 +4,31 @@ import 'package:amazone_clone/models/product.dart';
 
 class Order {
   final String id;
-  final String userId;
   final List<Product> products;
   final List<int> quantity;
   final String address;
+  final String userId;
   final int orderedAt;
   final int status;
   final double totalPrice;
-
-  Order(this.id, this.userId, this.products, this.quantity, this.address,
-      this.orderedAt, this.status, this.totalPrice);
+  Order({
+    required this.id,
+    required this.products,
+    required this.quantity,
+    required this.address,
+    required this.userId,
+    required this.orderedAt,
+    required this.status,
+    required this.totalPrice,
+  });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'userId': userId,
       'products': products.map((x) => x.toMap()).toList(),
       'quantity': quantity,
       'address': address,
+      'userId': userId,
       'orderedAt': orderedAt,
       'status': status,
       'totalPrice': totalPrice,
@@ -31,7 +38,6 @@ class Order {
   factory Order.fromMap(Map<String, dynamic> map) {
     return Order(
       id: map['_id'] ?? '',
-      userId: map['userId'] ?? '',
       products: List<Product>.from(
           map['products']?.map((x) => Product.fromMap(x['product']))),
       quantity: List<int>.from(
@@ -40,6 +46,7 @@ class Order {
         ),
       ),
       address: map['address'] ?? '',
+      userId: map['userId'] ?? '',
       orderedAt: map['orderedAt']?.toInt() ?? 0,
       status: map['status']?.toInt() ?? 0,
       totalPrice: map['totalPrice']?.toDouble() ?? 0.0,

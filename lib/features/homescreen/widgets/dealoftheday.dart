@@ -45,9 +45,8 @@ class _DealofthedayState extends State<Dealoftheday> {
                       alignment: Alignment.topLeft,
                       padding: const EdgeInsets.only(left: 10, top: 15),
                       child: const Text(
-                        'Deal of the Day',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500),
+                        'Deal of the day',
+                        style: TextStyle(fontSize: 20),
                       ),
                     ),
                     Image.network(
@@ -56,21 +55,19 @@ class _DealofthedayState extends State<Dealoftheday> {
                       fit: BoxFit.fitHeight,
                     ),
                     Container(
+                      padding: const EdgeInsets.only(left: 15),
                       alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.only(
-                        left: 15,
-                      ),
-                      child: const Text(
-                        '\$100',
-                        style: TextStyle(fontSize: 18),
+                      child: Text(
+                        '\$${product!.price}',
+                        style: const TextStyle(fontSize: 18),
                       ),
                     ),
                     Container(
                       alignment: Alignment.topLeft,
                       padding:
                           const EdgeInsets.only(left: 15, top: 5, right: 40),
-                      child: const Text(
-                        'Lund',
+                      child: Text(
+                        product!.name,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -78,27 +75,31 @@ class _DealofthedayState extends State<Dealoftheday> {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: product!.images
-                              .map(
-                                (e) => Image.network(
-                                  e,
-                                  fit: BoxFit.fitWidth,
-                                  width: 100,
-                                  height: 100,
-                                ),
-                              )
-                              .toList()),
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: product!.images
+                            .map(
+                              (e) => Image.network(
+                                e,
+                                fit: BoxFit.fitWidth,
+                                width: 100,
+                                height: 100,
+                              ),
+                            )
+                            .toList(),
+                      ),
                     ),
                     Container(
-                      padding:
-                          const EdgeInsets.only(left: 15, top: 15, bottom: 15),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                      ).copyWith(left: 15),
                       alignment: Alignment.topLeft,
                       child: Text(
                         'See all deals',
-                        style: TextStyle(color: Colors.cyan[800]),
+                        style: TextStyle(
+                          color: Colors.cyan[800],
+                        ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               );
