@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
-String uri = 'http://10.0.2.2:3000';
+String uri = kReleaseMode
+    ? 'https://exampla-12ac6.web.app' // Production URL
+    : 'http://10.0.2.2:3000';
 
 class GlobalVariable {
   // COLORS
