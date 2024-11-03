@@ -54,7 +54,7 @@ class AddressServices {
           },
           body: jsonEncode({
             'address': address,
-            'totalAmount': totalAmount,
+            'totalPrice': totalAmount,
             'cart': userProvider.user.cart,
           }));
       httpErrorHandel(
@@ -66,7 +66,7 @@ class AddressServices {
               cart: [],
             );
             userProvider.setUserFromModel(user);
-            showSnackbar(context, 'Your prder has been placed');
+            showSnackbar(context, 'Your order has been placed');
           });
     } catch (e) {
       showSnackbar(context, e.toString());

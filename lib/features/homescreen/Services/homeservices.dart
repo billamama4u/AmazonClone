@@ -48,7 +48,7 @@ class Homeservices {
     Product product = Product('', '', 0, 0, '', [], '', null);
     try {
       http.Response res =
-          await http.get(Uri.parse('$uri/api/deal-of-the-day'), headers: {
+          await http.get(Uri.parse('$uri/api/deal-of-day'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });
@@ -70,9 +70,9 @@ class Homeservices {
       SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
       await sharedPreferences.setString('x-auth-token', '');
-      Navigator.pushAndRemoveUntil(
+      Navigator.pushNamedAndRemoveUntil(
         context,
-        Authscreen.routeName as Route<Object?>,
+        Authscreen.routeName,
         (route) => false,
       );
     } catch (e) {

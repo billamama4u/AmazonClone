@@ -1,16 +1,15 @@
+import 'package:amazone_clone/common/widgets/bottombar.dart';
 import 'package:amazone_clone/common/widgets/custombutton.dart';
 import 'package:amazone_clone/common/widgets/customtextfielder.dart';
-import 'package:amazone_clone/common/widgets/loader.dart';
+
 import 'package:amazone_clone/constants/global_variabl.dart';
 import 'package:amazone_clone/constants/utils.dart';
 import 'package:amazone_clone/features/address/services/address_services.dart';
-import 'package:amazone_clone/features/homescreen/Screens/homescreen.dart';
+
 import 'package:amazone_clone/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/services.dart'
-    show rootBundle; // For loading the JSON config file
 
 class AddressScreen extends StatefulWidget {
   static const String routeName = '/address-screen';
@@ -160,7 +159,7 @@ class _AddressScreenState extends State<AddressScreen> {
                   text: 'Pay',
                   onTap: () {
                     payPressed(address);
-                    Navigator.pushNamed(context, HomeScreen.routeName);
+                    Navigator.pushNamed(context, BottomBar.routeName);
                   })
             ],
           ),
