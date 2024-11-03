@@ -16,31 +16,33 @@ class Order {
       this.orderedAt, this.status, this.totalPrice);
 
   Map<String, dynamic> toMap() {
-    final result = <String, dynamic>{};
-
-    result.addAll({'id': id});
-    result.addAll({'userId': userId});
-    result.addAll({'products': products.map((x) => x.toMap()).toList()});
-    result.addAll({'quantity': quantity});
-    result.addAll({'address': address});
-    result.addAll({'orderedAt': orderedAt});
-    result.addAll({'status': status});
-    result.addAll({'totalPrice': totalPrice});
-
-    return result;
+    return {
+      'id': id,
+      'userId': userId,
+      'products': products.map((x) => x.toMap()).toList(),
+      'quantity': quantity,
+      'address': address,
+      'orderedAt': orderedAt,
+      'status': status,
+      'totalPrice': totalPrice,
+    };
   }
 
   factory Order.fromMap(Map<String, dynamic> map) {
     return Order(
-      map['id'] ?? '',
-      map['userId'] ?? '',
-      List<Product>.from(
+      id: map['_id'] ?? '',
+      userId: map['userId'] ?? '',
+      products: List<Product>.from(
           map['products']?.map((x) => Product.fromMap(x['product']))),
-      List<int>.from(map['quantity']?.map((x) => x['quantity'])),
-      map['address'] ?? '',
-      map['orderedAt']?.toInt() ?? 0,
-      map['status']?.toInt() ?? 0,
-      map['totalPrice']?.toDouble() ?? 0.0,
+      quantity: List<int>.from(
+        map['products']?.map(
+          (x) => x['quantity'],
+        ),
+      ),
+      address: map['address'] ?? '',
+      orderedAt: map['orderedAt']?.toInt() ?? 0,
+      status: map['status']?.toInt() ?? 0,
+      totalPrice: map['totalPrice']?.toDouble() ?? 0.0,
     );
   }
 
