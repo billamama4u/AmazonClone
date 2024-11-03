@@ -1,8 +1,10 @@
+import 'package:amazone_clone/common/widgets/custombutton.dart';
 import 'package:amazone_clone/common/widgets/customtextfielder.dart';
 import 'package:amazone_clone/common/widgets/loader.dart';
 import 'package:amazone_clone/constants/global_variabl.dart';
 import 'package:amazone_clone/constants/utils.dart';
 import 'package:amazone_clone/features/address/services/address_services.dart';
+import 'package:amazone_clone/features/homescreen/Screens/homescreen.dart';
 import 'package:amazone_clone/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:pay/pay.dart';
@@ -29,22 +31,7 @@ class _AddressScreenState extends State<AddressScreen> {
   final TextEditingController _towncontroller = TextEditingController();
 
   List<PaymentItem> paymentItems = [];
-  onGpayResult(res) {
-    if (Provider.of<UserProvider>(context, listen: false)
-        .user
-        .address
-        .isEmpty) {
-      addressServices.saveAddress(
-        context: context,
-        address: addressToBeUsed,
-      );
-    }
-    addressServices.placeOrder(
-      context: context,
-      address: addressToBeUsed,
-      totalAmount: double.parse(widget.totalAmount),
-    );
-  }
+  onGpayResult(res) {}
 
   void payPressed(String addressFromProvider) {
     addressToBeUsed = '';
@@ -65,14 +52,20 @@ class _AddressScreenState extends State<AddressScreen> {
     } else {
       showSnackbar(context, 'Error');
     }
-  }
-
-  // Step 1: Load the Google Pay Configuration from `gpay.json`
-  Future<PaymentConfiguration> loadPaymentConfiguration() async {
-    // Load the JSON config file as a string
-    String configString = await rootBundle.loadString('assets/gpay.json');
-    return PaymentConfiguration.fromJsonString(
-        configString); // Parse the JSON config
+    if (Provider.of<UserProvider>(context, listen: false)
+        .user
+        .address
+        .isEmpty) {
+      addressServices.saveAddress(
+        context: context,
+        address: addressToBeUsed,
+      );
+    }
+    addressServices.placeOrder(
+      context: context,
+      address: addressToBeUsed,
+      totalAmount: double.parse(widget.totalAmount),
+    );
   }
 
   @override
@@ -163,32 +156,12 @@ class _AddressScreenState extends State<AddressScreen> {
                   ],
                 ),
               ),
-              // Step 2: Use FutureBuilder to load and apply the Google Pay configuration
-              FutureBuilder<PaymentConfiguration>(
-                future: loadPaymentConfiguration(), // Load configuration
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Loader(); // Show loading indicator
-                  }
-                  if (snapshot.hasError) {
-                    return const Text(
-                        'Error loading payment configuration'); // Error message
-                  }
-
-                  return GooglePayButton(
-                    onPressed: () => payPressed(address),
-                    paymentConfiguration: snapshot.data!, // Use loaded config
-                    paymentItems: paymentItems,
-                    type: GooglePayButtonType.buy,
-                    height: 50,
-                    margin: const EdgeInsets.only(top: 15.0),
-                    onPaymentResult: onGpayResult,
-                    loadingIndicator: const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                },
-              ),
+              CustomButton(
+                  text: 'Pay',
+                  onTap: () {
+                    payPressed(address);
+                    Navigator.pushNamed(context, HomeScreen.routeName);
+                  })
             ],
           ),
         ),
